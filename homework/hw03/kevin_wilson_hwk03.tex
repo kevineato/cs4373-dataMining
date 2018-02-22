@@ -1,0 +1,53 @@
+\documentclass{scrartcl}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\begin{document}
+\setlength\parindent{0pt}
+\author{Kevin Wilson (syx009)}
+\title{Homework 3}
+\date{\today}
+\maketitle
+
+\section{}
+Explain how the basic decision tree algorithm can be extended to incorporate the ranges (for Age and Salary) and the counts (in the count column) into the calculation of the impurity measures.  Then, use the extended algorithm by hand to find the best split of the given data using the following impurity measures.  You only need to show how to find the best split at the root node of the decision tree.  You need to show the details of the calculations for at least one attribute, and show the results for the rest of attributes.  You may want to write a program to perform the calculations. If you do so, also hand in your program source code.\\
+
+The basic algorithm can be extended by treating the continuous-valued attributes for Age and Salary as discrete values instead, using the ranges provided in the table, which works for information gain and gain ratio. For gini index, the two attributes best split point must be found by finding the mid-point between each of the ranges such that the expected information for that split point is minimized. The counts may be incorporated into the algorithm using the AVC-set of each of the attributes and their different values at the current node of the decision tree.
+
+\begin{enumerate}
+  \item[(a)] information gain
+  \item[(b)] gain ratio
+  \item[(c)] gini index
+\end{enumerate}
+
+\section{}
+Extend the Naive Bayes classifier algorithm so that it can also incorporate the ranges and counts in calculation of the probabilities.
+
+\begin{enumerate}
+  \item[(a)] Show how the extended algorithm would calculate the prior probabilities and the conditional probabilities $P(A_k | C)$ using the data table as the training data
+  \item[(b)] Show how the extended algorithm would determine the status of the following data tuple\\
+  
+  $t = <department: systems, status: ?, age: 28, salary: 50k>$\\
+  
+  Again, you need to show the details of the calculation for some of the probabilities, and for tuple $t$
+\end{enumerate}
+
+\section{}
+Use this dataset to create a suitable new data file, either hwk03.arff or hwk03.csv, by replicating each row with the number of copies as indicated in the count column. For example, you should make the first row in the given table appear 30 times in the new table. Then, remove the count column.\\
+
+Write a program that trains a decision tree using the new data file as the training data and use the decision tree to predict the status of a user provided unseen data, for example,\\
+
+$t = <department: systems, status: ?, age: 28, salary: 50k>$\\
+
+Specifically, you either write a Java program that uses Weka’s J48 or a Python Jupyter notebook that uses SciKit-Learn’s DecisionTreeClassifier to learn the decision tree.  Notice that SciKit-Learn requires to encode categorical attributes as integer attributes.\\
+
+You may have to convert the actual age and salary into the corresponding ranges for the decision tree to work on the unseen data.
+
+\section{}
+Make another new dataset (named hwk03-02.arff or hwk03-02.csv) from the data file obtained in the previous exercise by converting the values in the age and salary columns to random values drawn from the specific range for each row. For example, suppose the age of a row is “31..35”, replace it by a random integer between 31 and 35 inclusively.\\
+
+Write a program that uses either Weka or SciKit-Learn to learn a Naive Bayes classifier and use it to find the status of a user provided unseen data, for example,\\
+
+$t = <department: systems, status: ?, age: 28, salary: 50k>$
+
+\end{document}
